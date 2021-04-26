@@ -1,9 +1,9 @@
 FROM ubuntu:20.04
-MAINTAINER brian.wilkinson@1and1.co.uk
 ARG DEBIAN_FRONTEND=noninteractive
+COPY files/ /
 RUN \
   apt-get -y update && apt-get -y upgrade && \
-  apt-get -o Dpkg::Options::=--force-confdef -y install curl netcat wget telnet vim bzip2 ssmtp locales && \
+  apt-get -o Dpkg::Options::=--force-confdef -y install curl netcat wget telnet vim bzip2 ssmtp locales vim && \
   locale-gen en_GB.utf8 en_US.utf8 es_ES.utf8 de_DE.UTF-8 && \
   chmod -R 777 /var/run /etc/ssmtp /etc/passwd /etc/group && \
   mkdir --mode 777 -p /tmp/sockets && \
